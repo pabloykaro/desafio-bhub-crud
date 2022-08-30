@@ -2,10 +2,10 @@ import { Request } from "express";
 import Joi from 'joi';
 
 interface BodyPropsBanks{
-  agency_account: number | boolean,
-  account_bank: number | boolean,
-  operation_account: number | boolean,
-  bank_name: number | boolean,
+  agency_account: string | boolean,
+  account_bank: string | boolean,
+  bank_name: string | boolean,
+  id_pk_client: number | boolean
 }
 
 export default class VariablesBanks{
@@ -17,9 +17,22 @@ export default class VariablesBanks{
     this.input = req.body;
    }
 
-   get agencyAccount(): number | boolean{
+   get idPkClient(): number | boolean{
     this.schema = Joi.object({
-      agencyAccount: Joi.number().min(4).max(4).required()
+      idPkClient: Joi.number().min(0).required()
+    });
+
+    const { value, error} = this.schema.validate({idPkClient: this.input.id_pk_client});
+    if(error){
+      return false;
+    }else{
+      return value.idPkClient;
+    }
+   }
+
+   get agencyAccount(): string | boolean{
+    this.schema = Joi.object({
+      agencyAccount: Joi.string().length(4).pattern(/^[0-9]*$/).required()
     });
 
     const { value, error} = this.schema.validate({agencyAccount: this.input.agency_account});
@@ -30,9 +43,9 @@ export default class VariablesBanks{
     }
    }
 
-   get accountBank(): number | boolean{
+   get accountBank(): string | boolean{
     this.schema = Joi.object({
-      accountBank: Joi.number().min(8).max(8).required()
+      accountBank: Joi.string().length(9).pattern(/^[0-9]*$/).required()
     });
 
     const { value, error} = this.schema.validate({accountBank: this.input.account_bank});
@@ -43,22 +56,10 @@ export default class VariablesBanks{
     }
    }
 
-   get operationAccount(): number | boolean{
-    this.schema = Joi.object({
-      operationAccount: Joi.number().min(3).max(3).required()
-    });
 
-    const { value, error} = this.schema.validate({operationAccount: this.input.operation_account});
-    if(error){
-      return false;
-    }else{
-      return value.operationAccount;
-    }
-   }
-
-   get bankName(): number | boolean{
+   get bankName(): string | boolean{
     this.schema = Joi.object({
-      bankName: Joi.string().min(8).required()
+      bankName: Joi.string().min(4).required()
     });
 
     const { value, error} = this.schema.validate({bankName: this.input.bank_name});

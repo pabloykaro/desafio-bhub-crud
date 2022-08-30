@@ -8,6 +8,7 @@ interface BodyPropsClients {
   address_city: string | boolean,
   date_register_account: string | boolean,
   billing_declared: number | boolean,
+  id_client: number | boolean
 }
 
 export default class VariablesClients{
@@ -18,6 +19,19 @@ export default class VariablesClients{
 
    constructor(req: Request){
     this.input = req.body;
+   }
+
+   get idClient(): number | boolean{
+    this.schema = Joi.object({
+      idClient: Joi.number().min(0).required()
+    });
+
+    const { value, error} = this.schema.validate({idClient: this.input.id_client});
+    if(error){
+      return false;
+    }else{
+      return value.idClient;
+    }
    }
 
    get corporateName(): string | boolean{
@@ -35,7 +49,7 @@ export default class VariablesClients{
 
    get cnpjNumber(): string | boolean{
     this.schema = Joi.object({
-      cnpjNumber: Joi.string().length(14).pattern(/^[0-9]*$/)
+      cnpjNumber: Joi.string().length(14).pattern(/^[0-9]*$/).required()
     });
 
     const { value, error} = this.schema.validate({cnpjNumber: this.input.cnpj_number});
