@@ -4,7 +4,7 @@ import { UseCreateClient } from '../useCases/useCreateClient';
 
 export default class ControllersCreateClient{
   
-   loadCreate(req: Request, res: Response){
+   handle(req: Request, res: Response){
    
     UseCreateClient(req,res);
     
