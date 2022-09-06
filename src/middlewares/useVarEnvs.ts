@@ -1,9 +1,7 @@
 import * as dotenv from 'dotenv';
 
 const useVarEnvs = () => {
-  return dotenv.config({
-    path: process.env.TS_NODE_DEV === 'true' ? '.env.development' : '.env.production'
-  });
+  return dotenv.config();
 }
 
 export { useVarEnvs };
