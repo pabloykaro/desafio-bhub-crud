@@ -44,7 +44,7 @@
               },
               "example": {
                 "corporate_name": "Isabelle e Sara Locações de Automóveis Ltda",
-                "cnpj_number": 70475593000128,
+                "cnpj_number": "70475593000128",
                 "telephone_number": "(13) 99845-8303",
                 "address_city": "Rua Cinco",
                 "billing_declared": 150000
