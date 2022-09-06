@@ -15,8 +15,8 @@ const UseSelectAllClient = async (req: Request, res:Response) => {
     currency: 'BRL'
   });
   try{
-  if(idClient){
-    const [rows] = await connection.execute("SELECT *, count(id_bank) as quantityBank FROM bhub_clients INNER JOIN bhub_data_banks ON id_client=id_fk_client WHERE id_client=? GROUP BY id_client  ORDER BY id_client ASC",[idClient]) as RowDataPacket[];
+  if(idClient !== false){
+    const [rows] = await connection.execute("SELECT *, count(id_bank) as quantityBank FROM bhub_clients INNER JOIN bhub_data_banks ON id_client=id_fk_client WHERE id_client=? GROUP BY id_client ORDER BY id_client ASC",[idClient]) as RowDataPacket[];
   if(rows.length > 0){
     const newData = rows.map( (db_data: InterfaceDataClient) => {
       const date_register_account = format(db_data.date_register_account,'d/MM/y HH:m:s');
