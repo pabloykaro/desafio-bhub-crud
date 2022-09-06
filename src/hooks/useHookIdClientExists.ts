@@ -1,22 +1,23 @@
 import { Request, Response } from 'express';
 import { RowDataPacket } from 'mysql2';
+import { InterfaceDataClient } from '../@types/InterfaceDataClient';
 import connectionDataBase from '../database/databaseConnection';
-import VariablesClients from '../entity/clients';
+import {VariablesClients} from '../entity/clients';
 
 interface PropsIdClientsExists{
-  IdValidedBoolean: boolean;
+  IdClientValidedBoolean: boolean;
 }
 
-const UseHookIdClientExists = async (req: Request): Promise<PropsIdClientsExists> => {
-  const { idClient } = new VariablesClients(req);
+const UseHookIdClientExists = async (InputsHook: Pick<InterfaceDataClient, "id_client">): Promise<PropsIdClientsExists> => {
+  const { idClient } = new VariablesClients(InputsHook);
   const connection = await connectionDataBase.connect();
   const [rows] = await connection.execute("SELECT id_client FROM bhub_clients WHERE id_client=? ",[idClient]) as RowDataPacket[];
   if(rows.length > 0){
-    const IdValidedBoolean = true;
-    return {IdValidedBoolean};
+    const IdClientValidedBoolean = true;
+    return {IdClientValidedBoolean};
   }else{
-    const IdValidedBoolean = false;
-    return {IdValidedBoolean};
+    const IdClientValidedBoolean = false;
+    return {IdClientValidedBoolean};
   }
  
 }
