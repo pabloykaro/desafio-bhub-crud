@@ -1,9 +1,7 @@
-import { Request, Response } from 'express';
 import { RowDataPacket } from 'mysql2';
-import { InteraceDataBank } from '../@types/InterfaceDataBank';
+import { InteraceDataBank } from '../Interfaces/InterfaceDataBank';
 import connectionDataBase from '../database/databaseConnection';
 import {VariablesBanks} from '../entity/banks';
-import {VariablesClients} from '../entity/clients';
 
 interface PropsBanksExists{
   bankValidedBoolean: boolean;
