@@ -6,7 +6,7 @@ interface InterfaceDataClient{
   address_city: string,
   date_register_account: Date,
   billing_declared:string
-  quantityBank: number,
+  quantityBank: number
 }
 
 export { InterfaceDataClient };
