@@ -8,14 +8,13 @@ interface ConfigProps{
 }
 
 
-var db = process.env.MYSQL_DATABASE;
 class ConnectionDataBase{
 
-  config_mysql = {
-    host: process.env.MYSQL_HOST,
-    user: 'root',
-    password: '12345678',
-    database: 'database_bhub',
+ config_mysql = {
+    host: 'sql815.main-hosting.eu',
+    user: 'u618775946_desafiobhub',
+    password: 'Quiz8727',
+    database: 'u618775946_desafiobhub',
   } as ConfigProps ;
 
   async connect(){
