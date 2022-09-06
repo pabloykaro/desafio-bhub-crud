@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import * as dotenv from 'dotenv';import routes from './routes';
+import { useVarEnvs } from './middlewares/useVarEnvs';
+import routes from './routes';
 
-dotenv.config();
+useVarEnvs();
 
 const PORT = process.env.PORT || 5050;
 
