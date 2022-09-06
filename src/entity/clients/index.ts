@@ -1,7 +1,7 @@
 import { Request } from "express";
 import Joi from 'joi';
 
-interface BodyPropsClients {
+ interface BodyPropsClients {
   corporate_name: string | boolean,
   cnpj_number: string | boolean,
   telephone_number: string | boolean,
@@ -11,14 +11,14 @@ interface BodyPropsClients {
   id_client: number | boolean
 }
 
-export default class VariablesClients{
+export  class VariablesClients{
 
-  input: BodyPropsClients;
-  schema?: Joi.ObjectSchema<any>;
+ private input: BodyPropsClients;
+  private schema?: Joi.ObjectSchema<any>;
 
 
-   constructor(req: Request){
-    this.input = req.body;
+   constructor(input: any){
+    this.input = input;
    }
 
    get idClient(): number | boolean{
