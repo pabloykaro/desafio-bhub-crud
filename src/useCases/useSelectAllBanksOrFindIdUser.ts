@@ -12,7 +12,7 @@ const UseSelectAllBanksOrFindIdUser = async (req: Request, res: Response) => {
   const connection = await connectionDataBase.connect();
   
 try{
-  if(idClient !== false){
+  if(idClient){
     console.log(idClient);
      const [rows] = await connection.execute("SELECT * FROM bhub_data_banks WHERE id_fk_client=?",[idClient]) as RowDataPacket[];
      if(rows.length > 0){
