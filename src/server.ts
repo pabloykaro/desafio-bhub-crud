@@ -4,12 +4,11 @@ import routes from './routes';
 
 useVarEnvs();
 
-const PORT = 3333;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 5050;
 
 const app = express();
 app.use(express.json());
 app.use(routes);
 
 
-app.listen(PORT,HOST);
+app.listen(PORT, () => console.log('running server'));
