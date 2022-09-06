@@ -7,10 +7,12 @@ interface ConfigProps{
   database: string;
 }
 
+
+var db = process.env.MYSQL_DATABASE;
 class ConnectionDataBase{
 
   config_mysql = {
-    host: 'localhost',
+    host: process.env.MYSQL_HOST,
     user: 'root',
     password: '12345678',
     database: 'database_bhub',
