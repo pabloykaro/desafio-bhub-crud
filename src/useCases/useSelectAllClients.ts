@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import { Request, Response } from 'express';
 import { RowDataPacket } from 'mysql2';
 import connectionDataBase from '../database/databaseConnection';
-import { InterfaceDataClient } from '../@types/InterfaceDataClient';
+import { InterfaceDataClient } from '../Interfaces/InterfaceDataClient';
 import {VariablesClients} from '../entity/clients';
 
 
