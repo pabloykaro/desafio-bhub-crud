@@ -12,10 +12,10 @@ class ConnectionDataBase{
 
 
   config_mysql = {
-    host: 'sql815.main-hosting.eu',
-    user: 'u618775946_desafiobhub',
-    password: 'Quiz8727',
-    database: 'u618775946_desafiobhub',
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
   } as ConfigProps ;
 
   async connect(){
