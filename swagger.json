@@ -1,0 +1,738 @@
+{
+
+"openapi": "3.0.0",
+
+"components": {
+"securitySchemes": {
+  "Bearer":{
+    "type": "apiKey",
+    "name": "Authorization",
+    "in": "header"
+  }
+}
+},
+"security":[ {
+"Bearer": []
+}],
+
+"info": {
+  "title": "Desafio B-HUB Documentation",
+  "description": "This is api rest write by Pablo Developer",
+  "version": "1.0.0",
+  "contact": {
+    "email": "pabloykaro9@gmail.com"
+  }
+},
+"paths": {
+
+  "/createclient": {
+    "post": {
+      "tags": ["Request Post About Account"],
+      "summary": "Create a account",
+      "description": "Create a new account",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "corporate_name": { "type": "string"},
+                "cnpj_number": { "type": "string"},
+                "telephone_number": { "type": "string"},
+                "address_city": { "type": "string"},
+                "billing_declared": { "type": "number"}
+              },
+              "example": {
+                "corporate_name": "Isabelle e Sara Locações de Automóveis Ltda",
+                "cnpj_number": 70475593000128,
+                "telephone_number": "(13) 99845-8303",
+                "address_city": "Rua Cinco",
+                "billing_declared": 150000
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": 
+                    {
+                     "create": true
+                    }
+                  
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "boolean"}                  
+                  }
+                },
+                "example":{
+                  "data": 
+                    {
+                     "create": false
+                    }
+                  ,
+                  "err":
+                  {
+                    "corporate_name": "description",
+                    "cnpj_number": "description",
+                    "telephone_number": "description",
+                    "address_city": "description",
+                    "billing_declared": "description"
+                  }
+              }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/createbank": {
+    "post": {
+      "tags": ["Request Post About Bank"],
+      "summary": "Create a bank",
+      "description": "Create a new bank",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_client": { "type": "number"},
+                "agency_account": { "type": "string"},
+                "account_bank": { "type": "string"},
+                "bank_name": { "type": "string"}
+              },
+              "example": {
+                "id_client": 5,
+                "agency_account": "1445",
+                "account_bank": "06908454",
+                "bank_name": "Bradesco"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": 
+                    {
+                     "create": true
+                    }
+                  
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": 
+                    {
+                     "create": false
+                    }
+                  ,
+                  "err":
+                  {
+                    "corporate_name": "description",
+                    "cnpj_number": "description",
+                    "telephone_number": "description",
+                    "address_city": "description",
+                    "billing_declared": "description"
+                  }
+              }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/clients":{
+    "get": {
+      "tags": ["Request Get About Client"],
+      "summary": "List all clients",
+      "description": "List all clients",
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "id_client": {"type": "number"},
+                    "corporate_name": {"type": "string"},
+                    "cnpj_number": {"type": "string"},
+                    "telephone_number": {"type": "string"},
+                    "address_city": {"type": "string"},
+                    "date_register_account": {"type": "string"},
+                    "billing_declared": {"type": "string"},
+                    "quantity_account_banks": {"type": "number"}
+                  }
+                },
+                "example": 
+                {
+                  "data": [
+                    {
+                      "id_client": 5,
+                      "corporate_name": "Fabiana e Luciana Telecomunicações ME",
+                      "cnpj_number": "88546821000179",
+                      "telephone_number": "(11) 99394-2775",
+                      "address_city": "Rua Quinze de Novembro",
+                      "date_register_account": "30/08/2022 09:52:56",
+                      "billing_declared": "R$ 95.453,00",
+                      "quantity_account_banks": 1
+                    },
+                    {
+                      "id_client": 8,
+                      "corporate_name": "Isabelle e Sara Locações de Automóveis Ltda",
+                      "cnpj_number": "70475593000128",
+                      "telephone_number": "(13) 99845-8303",
+                      "address_city": "Rua Cinco",
+                      "date_register_account": "31/08/2022 14:58:25",
+                      "billing_declared": "R$ 150.000,00",
+                      "quantity_account_banks": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "not_exists_users": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "not_exists_users": "true"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }, 
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/clients/{id_client}":{
+    "get": {
+      "tags": ["Request Get About Client"],
+      "summary": "Filter client by id",
+      "description": "List client filtered",
+      "parameters": [{
+        "in": "path",
+        "name": "id_client",
+        "required": true,
+        "schema": {"type": "number"}
+      }],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "id_client": {"type": "number"},
+                    "corporate_name": {"type": "string"},
+                    "cnpj_number": {"type": "string"},
+                    "telephone_number": {"type": "string"},
+                    "address_city": {"type": "string"},
+                    "date_register_account": {"type": "string"},
+                    "billing_declared": {"type": "string"},
+                    "quantity_account_banks": {"type": "number"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                      "id_client": 5,
+                      "corporate_name": "Fabiana e Luciana Telecomunicações ME",
+                      "cnpj_number": "88546821000179",
+                      "telephone_number": "(11) 99394-2775",
+                      "address_city": "Rua Quinze de Novembro",
+                      "date_register_account": "30/08/2022 09:52:56",
+                      "billing_declared": "R$ 95.453,00",
+                      "quantity_account_banks": 1
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "not_exists_users": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "not_exists_users": "true"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }, 
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/dlt-clients/{id_client}":{
+    "delete": {
+      "tags": ["Request Delete About Client"],
+      "summary": "Delete client by id",
+      "description": "Delete client",
+      "parameters": [{
+        "in": "path",
+        "name": "id_client",
+        "required": true,
+        "schema": {"type": "number"}
+      }],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "delete": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "delete": true
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "delete": {"type": "boolean"}                  
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "delete": false
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/dlt-banks/{id_bank}/{id_fk_client}":{
+    "delete": {
+      "tags": ["Request Delete About Client"],
+      "summary": "Delete client by id",
+      "description": "Delete client",
+      "parameters": [{
+        "in": "path",
+        "name": "id_bank",
+        "required": true,
+        "schema": {"type": "number"}
+      },
+      {
+        "in": "path",
+        "name": "id_fk_client",
+        "required": false,
+        "schema": {"type": "number"}
+      }],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "delete": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "delete": true
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "delete": {"type": "boolean"}                  
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "delete": false
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "server_status": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/alt-billing": {
+    "patch": {
+      "tags": ["Request Patch About Account"],
+      "summary": "Update Billing filter by Id Account",
+      "description": "Updated Billing by Id Client",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_client": { "type": "number"},
+                "billing_declared": { "type": "number"}
+              },
+              "example": {
+                "id_client": 5,
+                "billing_declared": 150000
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "update": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "update": true
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "update": {"type": "boolean"}                  
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "update": false
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "create": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+}

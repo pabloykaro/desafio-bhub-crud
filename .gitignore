@@ -3,3 +3,7 @@
 
 /.eslintrc.json
 /yarn.lock
+
+.env
+.env.development
+.env.production
