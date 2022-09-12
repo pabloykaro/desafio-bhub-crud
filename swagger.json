@@ -312,13 +312,13 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "not_exists_users": {"type": "string"}
+                    "not_exists_users": {"type": "boolean"}
                   }
                 },
                 "example":{
                   "data": [
                     {
-                     "not_exists_users": "true"
+                     "not_exists_users": "false"
                     }
                   ]
               }
@@ -419,7 +419,7 @@
                 "example":{
                   "data": [
                     {
-                     "not_exists_users": "true"
+                     "not_exists_users": "false"
                     }
                   ]
               }
@@ -515,7 +515,7 @@
                 "example":{
                   "data": [
                     {
-                     "not_exists_account_banks": "true"
+                     "not_exists_account_banks": "false"
                     }
                   ]
               }
@@ -610,7 +610,7 @@
                 "example":{
                   "data": [
                     {
-                     "not_exists_account_banks": "true"
+                     "not_exists_account_banks": "false"
                     }
                   ]
               }
