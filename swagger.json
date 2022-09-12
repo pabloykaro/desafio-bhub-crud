@@ -120,7 +120,7 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "create": {"type": "string"}
+                    "server_status": {"type": "string"}
                   }
                 },
                 "example":{
@@ -230,7 +230,7 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "create": {"type": "string"}
+                    "server_status": {"type": "string"}
                   }
                 },
                 "example":{
@@ -413,7 +413,7 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "not_exists_users": {"type": "string"}
+                    "not_exists_users": {"type": "boolean"}
                   }
                 },
                 "example":{
@@ -437,7 +437,198 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "create": {"type": "string"}
+                    "server_status": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/banks":{
+    "get": {
+      "tags": ["Request Get About Bank"],
+      "summary": "List all banks",
+      "description": "List all banks",
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "id_bank": {"type": "number"},
+                    "id_fk_client": {"type": "number"},
+                    "agency_account": {"type": "string"},
+                    "account_bank": {"type": "string"}
+                  }
+                },
+                "example": 
+                {
+                  "data": [
+                    {
+                      "id_bank": 9,
+                      "id_fk_client": 8,
+                      "agency_account": "1445",
+                      "account_bank": "06908454",
+                      "bank_name": "Bradesco"
+                    },
+                    {
+                      "id_bank": 10,
+                      "id_fk_client": 2,
+                      "agency_account": "2010",
+                      "account_bank": "20908454",
+                      "bank_name": "Nu Bank"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "not_exists_account_banks": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "not_exists_account_banks": "true"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }, 
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "server_status": {"type": "string"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "server_status": "off"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/banks/{id_client}":{
+    "get": {
+      "tags": ["Request Get About Bank"],
+      "summary": "List all banks",
+      "description": "List all banks",
+      "parameters": [{
+        "in": "path",
+        "name": "id_client",
+        "required": true,
+        "schema": {"type": "number"}
+      }],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "id_bank": {"type": "number"},
+                    "id_fk_client": {"type": "number"},
+                    "agency_account": {"type": "string"},
+                    "account_bank": {"type": "string"}
+                  }
+                },
+                "example": 
+                {
+                  "data": [
+                    {
+                      "id_bank": 9,
+                      "id_fk_client": 8,
+                      "agency_account": "1445",
+                      "account_bank": "06908454",
+                      "bank_name": "Bradesco"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "not_exists_account_banks": {"type": "boolean"}
+                  }
+                },
+                "example":{
+                  "data": [
+                    {
+                     "not_exists_account_banks": "true"
+                    }
+                  ]
+              }
+              }
+            }
+          }
+        }, 
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "data": {
+                  "type": "array",
+                  "properties": {
+                    "type": "object",
+                    "server_status": {"type": "string"}
                   }
                 },
                 "example":{
@@ -524,7 +715,7 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "create": {"type": "string"}
+                    "server_status": {"type": "string"}
                   }
                 },
                 "example":{
@@ -715,7 +906,7 @@
                   "type": "array",
                   "properties": {
                     "type": "object",
-                    "create": {"type": "string"}
+                    "server_status": {"type": "string"}
                   }
                 },
                 "example":{
