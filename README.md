@@ -7,7 +7,13 @@ Manual para rodar o projeto:
 
 2º Caso use NPM ou YARN, use o "yarn install" ou "npm install" para obter as dependências do projeto.
 
-3º Para rodar o projeto localmente use "yarn dev" ou "npm run dev"
+Guia para rodar o projeto: 
+
+- Para rodar o projeto em desenvolvimento use "yarn dev" ou "npm run dev"
+
+- Para rodar o projeto no ambiente de teste use "yarn vitest" ou "npm run vitest"
+
+
 
 
 Objetivo da API:
