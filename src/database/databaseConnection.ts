@@ -1,4 +1,5 @@
 import mysql from 'mysql2/promise';
+import { RowDataPacket } from 'mysql2';
 
 interface ConfigProps{
   host: string;
@@ -10,12 +11,11 @@ interface ConfigProps{
 
 class ConnectionDataBase{
 
-
   config_mysql = {
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+    host: 'localhost',
+    user: 'root',
+    password: '12345678',
+    database: 'database_bhub',
   } as ConfigProps ;
 
   async connect(){
@@ -23,5 +23,5 @@ class ConnectionDataBase{
     return con;
   }
 }
-const connectionDataBase = new ConnectionDataBase;
-export default connectionDataBase;
+const connectDataBase = new ConnectionDataBase;
+export {connectDataBase, RowDataPacket};
