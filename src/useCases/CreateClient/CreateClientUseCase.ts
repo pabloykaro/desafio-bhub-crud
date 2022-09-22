@@ -6,7 +6,7 @@ export class CreateClientUseCase{
      constructor(
       private createClientRepository: ICreateClientRepository
      ){}
-  async execute(data: Omit<CreateClientRequestDTO, "date_register_account">){
+  async execute(data: Omit<CreateClientRequestDTO,"id_client" | "date_register_account" | "status_account">){
 
     const clientAlreadyExists = await this.createClientRepository.findByCnpj(data.cnpj_number);
     if(clientAlreadyExists){

@@ -16,26 +16,32 @@ export class CreateClientRepository implements ICreateClientRepository{
    }
 
    async save(entitesClient: Client){
-    const { 
+    const {
+      id_client,
       cnpj_number, 
       corporate_name, 
       telephone_number, 
       address_city, 
       date_register_account, 
-      billing_declared } = entitesClient;
+      billing_declared,
+      status_account
+     } = entitesClient;
       
     const isConnectionMySql = await connectDataBase.connect();
-    const queryCreateClient = `INSERT INTO bhub_clients(corporate_name,cnpj_number,telephone_number,
-    address_city,date_register_account,billing_declared) VALUES(?,?,?,?,?,?)`;
+    const queryCreateClient = 
+    `INSERT INTO bhub_clients(id_client,corporate_name,cnpj_number,telephone_number,
+    address_city,date_register_account,billing_declared,status_account) VALUES(?,?,?,?,?,?,?,?)`;
     
     await isConnectionMySql.execute(queryCreateClient,
       [
+      id_client,
       corporate_name,
       cnpj_number,
       telephone_number,
       address_city,
       date_register_account,
-      billing_declared
+      billing_declared,
+      status_account
       ]) as RowDataPacket[];
 
    }
