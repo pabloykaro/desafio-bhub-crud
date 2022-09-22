@@ -5,10 +5,10 @@ import { Client } from "../../../entities/Client";
 
 export class CreateClientRepository implements ICreateClientRepository{
 
-   async findByCnpj(cnpjNumber: string){
+   async findByCnpj(cnpj_number: string){
     const isConnectionMySql = await connectDataBase.connect();
     const querySelectClientByCnpj = `SELECT cnpj_number FROM bhub_clients WHERE cnpj_number=?`;
-    const [rows] = await isConnectionMySql.execute(querySelectClientByCnpj,[cnpjNumber]) as RowDataPacket[];
+    const [rows] = await isConnectionMySql.execute(querySelectClientByCnpj,[cnpj_number]) as RowDataPacket[];
 
     if(rows.length > 0) return true;
 
@@ -17,12 +17,12 @@ export class CreateClientRepository implements ICreateClientRepository{
 
    async save(entitesClient: Client){
     const { 
-      cnpjNumber, 
-      corporateName, 
-      telephoneNumber, 
-      addressCity, 
-      dateRegisterAccount, 
-      billingDeclared } = entitesClient;
+      cnpj_number, 
+      corporate_name, 
+      telephone_number, 
+      address_city, 
+      date_register_account, 
+      billing_declared } = entitesClient;
       
     const isConnectionMySql = await connectDataBase.connect();
     const queryCreateClient = `INSERT INTO bhub_clients(corporate_name,cnpj_number,telephone_number,
@@ -30,12 +30,12 @@ export class CreateClientRepository implements ICreateClientRepository{
     
     await isConnectionMySql.execute(queryCreateClient,
       [
-      corporateName,
-      cnpjNumber,
-      telephoneNumber,
-      addressCity,
-      dateRegisterAccount,
-      billingDeclared
+      corporate_name,
+      cnpj_number,
+      telephone_number,
+      address_city,
+      date_register_account,
+      billing_declared
       ]) as RowDataPacket[];
 
    }

@@ -9,20 +9,20 @@ export class CreateClientController{
   async handle(request: Request, response: Response){
 
     const { 
-      corporateName,
-      cnpjNumber,
-      telephoneNumber,
-      addressCity,
-      billingDeclared } = request.body;
+      corporate_name,
+      cnpj_number,
+      telephone_number,
+      address_city,
+      billing_declared } = request.body;
 
     try{
       
     await this.createClientUseCases.execute({
-      corporateName,
-      cnpjNumber,
-      telephoneNumber,
-      addressCity,
-      billingDeclared });
+      corporate_name,
+      cnpj_number,
+      telephone_number,
+      address_city,
+      billing_declared });
      
     return response.status(201).json({data: {create: true}});
 

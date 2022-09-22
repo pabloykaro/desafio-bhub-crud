@@ -14,15 +14,15 @@ describe('Create Client',() => {
 
    test('should be able to create a new client', async () => {
       const createClientDTO =  {
-         corporateName: 'Solutions Tecnologia BR',
-         cnpjNumber: '108381262356',
-         telephoneNumber: '85994192707',
-         addressCity: 'Brazil',
-         billingDeclared: 5000,
+         corporate_name: 'Solutions Tecnologia BR',
+         cnpj_number: '108381262356',
+         telephone_number: '85994192707',
+         address_city: 'Brazil',
+         billing_declared: 5000,
         }
      await createClientUseCase.execute(createClientDTO);
      const findCnpjExists = await createClientRepositoryInMemory.findByCnpj(
-      createClientDTO.cnpjNumber
+      createClientDTO.cnpj_number
       );
       expect(findCnpjExists).toBeTruthy();
    });
@@ -30,11 +30,11 @@ describe('Create Client',() => {
    test('should not be able to create a new client with cnpj exists', async () => {
       expect( async () => {
          const createClientDTO =  {
-            corporateName: 'Solutions Tecnologia BR',
-            cnpjNumber: '108381262356',
-            telephoneNumber: '85994192707',
-            addressCity: 'Brazil',
-            billingDeclared: 5000,
+            corporate_name: 'Solutions Tecnologia BR',
+            cnpj_number: '108381262356',
+            telephone_number: '85994192707',
+            address_city: 'Brazil',
+            billing_declared: 5000,
            }
            await createClientUseCase.execute(createClientDTO);
            await createClientUseCase.execute(createClientDTO);

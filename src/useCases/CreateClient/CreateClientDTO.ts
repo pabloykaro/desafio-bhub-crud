@@ -1,8 +1,8 @@
 export interface CreateClientRequestDTO{
-  corporateName: string;
-  cnpjNumber: string;
-  telephoneNumber: string;
-  addressCity: string;
-  dateRegisterAccount: string;
-  billingDeclared: number;
+  corporate_name: string;
+  cnpj_number: string;
+  telephone_number: string;
+  address_city: string;
+  date_register_account: string;
+  billing_declared: number;
 }

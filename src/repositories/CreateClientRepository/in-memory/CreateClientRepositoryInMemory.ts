@@ -6,8 +6,8 @@ export class CreateClientRepositoryInMemory implements ICreateClientRepository{
 
   public clients: Client[] = [];
 
-   async findByCnpj(cnpjNumber: string): Promise<boolean>{
-     const client = this.clients.find((client) => client.cnpjNumber === cnpjNumber);
+   async findByCnpj(cnpj_number: string): Promise<boolean>{
+     const client = this.clients.find((client) => client.cnpj_number === cnpj_number);
      if(client) return true;
      
      return false;
