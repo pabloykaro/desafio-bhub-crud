@@ -1,4 +1,4 @@
-import { ICreateClientRepository } from "../../repositories/CreateClientRepository/ICreateClientRepository";
+import { ICreateClientRepository } from "../../repositories/ICreateClientRepository"; 
 import { CreateClientRequestDTO } from "./CreateClientDTO";
 import { Client } from "../../entities/Client";
 

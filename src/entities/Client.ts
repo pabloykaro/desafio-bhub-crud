@@ -7,9 +7,9 @@ export class Client{
   public cnpj_number: string;
   public telephone_number: string;
   public address_city: string;
-  public date_register_account: string;
+  public readonly date_register_account: string;
   public billing_declared: number;
-  public status_account: string;
+  public readonly status_account: string;
 
   constructor(
     props: Omit<Client, "id_client" | "date_register_account" | "status_account">,

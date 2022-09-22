@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, test } from "vitest";
 
-import { CreateClientRepositoryInMemory } from "../../repositories/CreateClientRepository/in-memory/CreateClientRepositoryInMemory";
+import { CreateClientRepositoryInMemory } from "../../repositories/in-memory/CreateClientRepositoryInMemory";
 import { CreateClientUseCase } from "./CreateClientUseCase";
-
+import { CreateClientRequestDTO } from "./CreateClientDTO";
 let createClientRepositoryInMemory: CreateClientRepositoryInMemory;
 let createClientUseCase: CreateClientUseCase;
 
@@ -13,7 +13,10 @@ describe('Create Client', () => {
    });
 
    test('should be able to create a new client', async () => {
-      const createClientDTO = {
+      const createClientDTO: 
+      Omit<CreateClientRequestDTO,
+      "id_client" | "date_register_account" | "status_account"> 
+      = {
          corporate_name: 'Solutions Tecnologia BR',
          cnpj_number: '108381262356',
          telephone_number: '85994192707',
@@ -30,7 +33,10 @@ describe('Create Client', () => {
 
    test('should not be able to create a new client with cnpj exists', async () => {
       expect( async () => {
-         const createClientDTO =  {
+         const createClientDTO: 
+         Omit<CreateClientRequestDTO,
+         "id_client" | "date_register_account" | "status_account"> 
+         = {
             corporate_name: 'Solutions Tecnologia BR',
             cnpj_number: '108381262356',
             telephone_number: '85994192707',

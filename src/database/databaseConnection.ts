@@ -23,5 +23,5 @@ class ConnectionDataBase{
     return con;
   }
 }
-const connectDataBase = new ConnectionDataBase;
-export {connectDataBase, RowDataPacket};
+const dataBaseMYSQL = new ConnectionDataBase;
+export {dataBaseMYSQL, RowDataPacket};
