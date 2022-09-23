@@ -12,7 +12,7 @@ export class CreateClientRepositoryInMemory implements ICreateClientRepository{
      return false;
    }
 
-   async save(entitesClient: Client): Promise<void>{
-    this.clients.push(entitesClient);
+   async save(entityClient: Client): Promise<void>{
+    this.clients.push(entityClient);
    }
 }
