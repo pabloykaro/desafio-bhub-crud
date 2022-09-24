@@ -1,8 +1,8 @@
 import { Bank } from "../../entities/Bank";
-import { ICreateBankRepository } from "../ICreateBankRepository";
+import { IBankRepository } from "../IBankRepository";
 
 
-export class CreateBankRepositoryInMemory implements ICreateBankRepository{
+export class BankRepositoryInMemory implements IBankRepository{
 
   public banks: Bank[] = [];
 

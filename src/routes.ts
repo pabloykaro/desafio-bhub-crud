@@ -4,7 +4,7 @@ import DocsApi from '../swagger.json';
 
 import { createClientController } from "./useCases/CreateClient/index";
 import { createBankController } from './useCases/CreateBank';
-
+import { listClientController } from './useCases/ListClient';
 const routes = Router();
 
 
@@ -17,9 +17,15 @@ routes.post('/clients', (request: Request, response: Response) => {
   return createClientController.handle(request, response);
 });
 
+routes.get('/clients', (request: Request, response: Response) => {
+  return listClientController.handle(request, response);
+});
+
 routes.post('/banks', (request: Request, response: Response) => {
   return createBankController.handle(request, response);
 });
+
+
 
 
 

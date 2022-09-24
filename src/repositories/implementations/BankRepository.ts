@@ -1,8 +1,8 @@
 import {dataBaseMYSQL, RowDataPacket} from "../../database/databaseConnection";
 import { Bank } from "../../entities/Bank";
-import { ICreateBankRepository } from "../ICreateBankRepository";
+import { IBankRepository } from "../IBankRepository";
 
-export class CreateBankRepository implements ICreateBankRepository{
+export class BankRepository implements IBankRepository{
  
   async findByAccountBank(account_bank: string): Promise<boolean> {
     const connection = await dataBaseMYSQL.connect();

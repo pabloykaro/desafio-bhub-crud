@@ -1,8 +1,8 @@
-import { CreateClientRepository } from "../../repositories/implementations/CreateClientRepository";
+import { ClientRepository } from "../../repositories/implementations/ClientRepository";
 import { CreateClientUseCase } from "./CreateClientUseCase";
 import { CreateClientController } from "./CreateClientController";
 
-const createClientRepository = new CreateClientRepository();
+const createClientRepository = new ClientRepository();
 const createClientUseCase = new CreateClientUseCase(createClientRepository);
 const createClientController = new CreateClientController(createClientUseCase);
 

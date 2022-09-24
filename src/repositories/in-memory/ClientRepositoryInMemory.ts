@@ -1,9 +1,9 @@
-import { ICreateClientRepository } from "../ICreateClientRepository";
+import { IClientRepository } from "../IClientRepository";
 import { Client } from "../../entities/Client";
 
 
-export class CreateClientRepositoryInMemory implements ICreateClientRepository{
-
+export class ClientRepositoryInMemory implements IClientRepository{
+  
   public clients: Client[] = [];
 
    async findByCnpj(cnpj_number: string): Promise<boolean>{
@@ -15,4 +15,7 @@ export class CreateClientRepositoryInMemory implements ICreateClientRepository{
    async save(entityClient: Client): Promise<void>{
     this.clients.push(entityClient);
    }
+   async list(): Promise<Client[]> {
+    return this.clients;
+  }
 }

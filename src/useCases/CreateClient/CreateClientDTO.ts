@@ -1,4 +1,4 @@
-export interface CreateClientRequestDTO{
+export interface CreateClientDTO{
   id_client: string;
   corporate_name: string;
   cnpj_number: string;

@@ -1,13 +1,13 @@
 import { describe, beforeEach, test, expect } from "vitest";
-import { CreateBankRepositoryInMemory } from "../../repositories/in-memory/CreateBankRepositoryInMemory";
+import { BankRepositoryInMemory } from "../../repositories/in-memory/BankRepositoryInMemory";
 import { CreateBankUseCase } from "./CreateBankUseCase";
 import { CreateBankRequestDTO } from "./CreateBankDTO";
-let createBankRepositoryInMemory: CreateBankRepositoryInMemory;
+let createBankRepositoryInMemory: BankRepositoryInMemory;
 let createBankUseCase: CreateBankUseCase;
 
 describe('Create Bank', () => {
   beforeEach(()=> {
-    createBankRepositoryInMemory = new CreateBankRepositoryInMemory();
+    createBankRepositoryInMemory = new BankRepositoryInMemory();
     createBankUseCase = new CreateBankUseCase(createBankRepositoryInMemory);
   });
 

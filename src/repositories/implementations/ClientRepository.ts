@@ -1,9 +1,10 @@
 import {dataBaseMYSQL, RowDataPacket} from "../../database/databaseConnection";
-import { ICreateClientRepository } from "../ICreateClientRepository";
+import { IClientRepository } from "../IClientRepository";
 import { Client } from "../../entities/Client";
+import { ClientRequestDTO } from "../../useCases/CreateClient/CreateClientDTO";
 
 
-export class CreateClientRepository implements ICreateClientRepository{
+export class ClientRepository implements IClientRepository{
 
    async findByCnpj(cnpj_number: string): Promise<boolean>{
     const connection = await dataBaseMYSQL.connect();
@@ -49,4 +50,12 @@ export class CreateClientRepository implements ICreateClientRepository{
       ]) as RowDataPacket[];
 
    }
+   async list(): Promise<Client[]> {
+    const connection = await dataBaseMYSQL.connect();
+    const querySelectAllClient = 
+    `SELECT * FROM bhub_clients`;
+    const [rows] = await connection.query(querySelectAllClient) as RowDataPacket[];
+    const clients = rows.map((values: ClientRequestDTO) => values);
+    return clients;
+}
 }

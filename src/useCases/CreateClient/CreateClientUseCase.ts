@@ -1,20 +1,20 @@
-import { ICreateClientRepository } from "../../repositories/ICreateClientRepository"; 
-import { CreateClientRequestDTO } from "./CreateClientDTO";
+import { IClientRepository } from "../../repositories/IClientRepository"; 
+import { CreateClientDTO } from "./CreateClientDTO";
 import { Client } from "../../entities/Client";
 
 export class CreateClientUseCase{
      constructor(
-      private createClientRepository: ICreateClientRepository
+      private ClientRepository: IClientRepository
      ){}
-  async execute(data: Omit<CreateClientRequestDTO,"id_client" | "date_register_account" | "status_account">){
+  async execute(data: Omit<CreateClientDTO,"id_client" | "date_register_account" | "status_account">){
 
-    const clientAlreadyExists = await this.createClientRepository.findByCnpj(data.cnpj_number);
+    const clientAlreadyExists = await this.ClientRepository.findByCnpj(data.cnpj_number);
     if(clientAlreadyExists){
       throw new Error('Client already exists.');
     }
 
     const client = new Client(data);
-    await this.createClientRepository.save(client);
+    await this.ClientRepository.save(client);
    
   }
 }

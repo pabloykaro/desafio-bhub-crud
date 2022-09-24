@@ -1,20 +1,20 @@
 import { beforeEach, describe, expect, test } from "vitest";
 
-import { CreateClientRepositoryInMemory } from "../../repositories/in-memory/CreateClientRepositoryInMemory";
+import { ClientRepositoryInMemory } from "../../repositories/in-memory/ClientRepositoryInMemory";
 import { CreateClientUseCase } from "./CreateClientUseCase";
-import { CreateClientRequestDTO } from "./CreateClientDTO";
-let createClientRepositoryInMemory: CreateClientRepositoryInMemory;
+import { ClientRequestDTO } from "./CreateClientDTO";
+let createClientRepositoryInMemory: ClientRepositoryInMemory;
 let createClientUseCase: CreateClientUseCase;
 
 describe('Create Client', () => {
    beforeEach(() =>{
-   createClientRepositoryInMemory = new CreateClientRepositoryInMemory();
+   createClientRepositoryInMemory = new ClientRepositoryInMemory();
    createClientUseCase = new CreateClientUseCase(createClientRepositoryInMemory);
    });
 
    test('should be able to create a new client', async () => {
       const createClientDTO: 
-      Omit<CreateClientRequestDTO,
+      Omit<ClientRequestDTO,
       "id_client" | "date_register_account" | "status_account"> 
       = {
          corporate_name: 'Solutions Tecnologia BR',
@@ -34,7 +34,7 @@ describe('Create Client', () => {
    test('should not be able to create a new client with cnpj exists', async () => {
       expect( async () => {
          const createClientDTO: 
-         Omit<CreateClientRequestDTO,
+         Omit<ClientRequestDTO,
          "id_client" | "date_register_account" | "status_account"> 
          = {
             corporate_name: 'Solutions Tecnologia BR',
