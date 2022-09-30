@@ -8,7 +8,7 @@ export class Client{
   public telephone_number: string;
   public address_city: string;
   public readonly date_register_account: string;
-  public billing_declared: number;
+  public billing_declared: string;
   public readonly status_account: string;
 
   constructor(

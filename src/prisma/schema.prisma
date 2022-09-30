@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "linux-musl"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:12345678@db:3306/database_bhub"
+}
+
+model bhub_clients {
+  id_client             String            @id @db.VarChar(255)
+  corporate_name        String            @db.VarChar(255)
+  cnpj_number           String            @db.VarChar(255)
+  telephone_number      String            @db.VarChar(255)
+  address_city          String            @db.VarChar(255)
+  date_register_account String            @db.VarChar(255)
+  billing_declared      String            @db.VarChar(255)
+  status_account        String            @db.VarChar(255)
+  bhub_data_banks       bhub_data_banks[]
+
+  @@unique([cnpj_number])
+}
+
+model bhub_data_banks {
+  id_bank         String       @id @db.VarChar(255)
+  bhub_data_banks bhub_clients @relation(fields: [id_fk_client], references: [id_client])
+  agency_account  String       @db.VarChar(255)
+  account_bank    String       @db.VarChar(255)
+  bank_name       String       @db.VarChar(255)
+  id_fk_client    String       @db.VarChar(255)
+}

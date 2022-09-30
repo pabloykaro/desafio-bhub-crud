@@ -5,6 +5,6 @@ export interface CreateClientDTO{
   telephone_number: string;
   address_city: string;
   date_register_account: string;
-  billing_declared: number;
+  billing_declared: string;
   status_account: string;
 }

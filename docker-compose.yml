@@ -19,6 +19,6 @@ services:
       MYSQL_PASSWORD: 12345678
       MYSQL_DATABASE: database_bhub # create this database on startup
     ports:
-      - '3306:3306'
+      - "3302:3306"
    
     

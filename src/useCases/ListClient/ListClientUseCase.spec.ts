@@ -11,7 +11,6 @@ describe('List Client', () => {
   beforeEach(() => {
     clientRepositoryInMemory = new ClientRepositoryInMemory();
     listClientUseCase = new ListClientUseCase(clientRepositoryInMemory);
-    
   });
 
   test('should be able list clients', async () => {
@@ -27,7 +26,7 @@ describe('List Client', () => {
       status_account: 'active'
      }
   
-    await clientRepositoryInMemory.save(createClientDTO);
+   await clientRepositoryInMemory.save(createClientDTO);
    const result = await listClientUseCase.execute();
    expect(result).toEqual([createClientDTO]);
 

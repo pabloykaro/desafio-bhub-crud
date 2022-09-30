@@ -12,8 +12,8 @@ interface ConfigProps{
 class ConnectionDataBase{
 
   config_mysql = {
-    host: 'localhost',
-    user: 'root',
+    host: 'db',
+    user: 'pablodev',
     password: '12345678',
     database: 'database_bhub',
   } as ConfigProps ;
