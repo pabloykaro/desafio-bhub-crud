@@ -6,7 +6,7 @@ export class DeleteClientUseCase {
     private ClientRepository: IClientRepository
   ){}
   async execute(cnpj_number: string){
-    const findByCnpjClient = this.ClientRepository.findByCnpj(cnpj_number);
+    const findByCnpjClient = await this.ClientRepository.findByCnpj(cnpj_number);
     
     if(!findByCnpjClient){
       throw new Error('Client not exists');

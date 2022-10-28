@@ -16,6 +16,14 @@ export class ClientRepository implements IClientRepository{
 
    return findManyByCnpj as Client;
    }
+  async findByIdClient(id_client: string): Promise<Client> {
+    const findId = await prisma.bhub_clients.findUnique({
+      where: {
+      id_client
+      }
+    });
+    return findId as Client;
+   }
    async save(entitesClient: Client): Promise<void>{
     const {
       id_client,
