@@ -9,6 +9,6 @@ export class ListClientController{
 
   async handle(request: Request, response: Response){
   const result = await this.listClientUseCase.execute();
-  response.status(201).json({data: result});
+  response.status(200).json({data: result});
   }
 }

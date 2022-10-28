@@ -21,7 +21,7 @@ describe('List Client', () => {
       cnpj_number: '108381262356',
       telephone_number: '85994192707',
       address_city: 'Brazil',
-      billing_declared: 5000,
+      billing_declared: "5000",
       date_register_account: '2022-04-02 12:00:00',
       status_account: 'active'
      }
