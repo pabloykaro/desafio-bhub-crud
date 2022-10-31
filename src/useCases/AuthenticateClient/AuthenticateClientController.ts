@@ -11,7 +11,7 @@ export class AuthenticateClientController{
        const token = await this.authenticateClientUseCase.execute(cnpj_number);
       return response.status(200).json(token);
       }catch(error){
-        return response.status(400).json({
+        return response.status(401).json({
           client: "",
           token: ""
         });
